@@ -26,7 +26,17 @@ def rule_new_merchant(merchant: dict, transaction: dict, high_value_threshold: f
 
 
 def rule_location_anomaly(transaction: dict, user: dict):
-    """Rule 5: transaction location differs from user's usual location"""
+    """Rule 5: transaction location differs from user's usual location
+    
+    WARNING: This rule uses exact string matching and may produce false positives.
+    Known issues:
+    - Triggers for same city with different IP addresses
+    - Doesn't account for VPN usage or mobile network changes
+    - Doesn't use geographic distance calculation
+    
+    TODO: Implement haversine distance calculation for true geographic anomaly detection
+    Recommended threshold: >50km from usual location
+    """
     usual = user.get("usual_location", "")
     current = transaction.get("location", "")
     triggered = current.strip().lower() != usual.strip().lower()

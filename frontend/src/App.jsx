@@ -23,9 +23,7 @@ import {
   Smartphone, 
   MapPin, 
   Globe, 
-  Clock, 
-  ShieldCheck, 
-  AlertTriangle 
+  Clock
 } from 'lucide-react';
 
 export default function App() {
@@ -191,7 +189,7 @@ export default function App() {
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                     <span style={{ color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '6px' }}>
                       <User size={13} />
-                      Origin Account
+                      Sender
                     </span>
                     <span style={{ color: 'var(--text-primary)', fontFamily: 'var(--font-mono)', fontSize: '11px' }}>
                       {txDetail.user?.id || txDetail.user_id}
@@ -209,11 +207,11 @@ export default function App() {
                     </span>
                   </div>
 
-                  {/* Device Profile */}
+                  {/* Device Status */}
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                     <span style={{ color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '6px' }}>
                       <Smartphone size={13} />
-                      Hardware Trust
+                      Device Status
                     </span>
                     <span className={txDetail.is_new_device ? 'badge badge-critical' : 'badge badge-low'}>
                       {txDetail.is_new_device ? 'Unverified / New' : 'Recognized'}
@@ -235,7 +233,7 @@ export default function App() {
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                     <span style={{ color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: '6px' }}>
                       <Globe size={13} />
-                      IP Routing
+                      IP Address
                     </span>
                     <span className="font-mono" style={{ color: 'var(--text-muted)', fontSize: '11px' }}>
                       {txDetail.ip_address || '127.0.0.1'}

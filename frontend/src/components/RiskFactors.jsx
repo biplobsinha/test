@@ -1,14 +1,13 @@
 import React from 'react';
-import { AlertTriangle, DollarSign, Zap, Smartphone, Store, MapPin, Flag } from 'lucide-react';
+import { AlertTriangle, DollarSign, Zap, Smartphone, Store, MapPin } from 'lucide-react';
 
 export default function RiskFactors({ factors = [] }) {
   const factorMeta = {
-    'Unusual amount': { weight: 25, desc: 'Transaction exceeds 5x user baseline volume', icon: DollarSign },
-    'High velocity': { weight: 20, desc: 'High frequency transaction burst detected', icon: Zap },
-    'New device': { weight: 20, desc: 'High-value transaction on unverified device hardware', icon: Smartphone },
-    'Merchant risk': { weight: 20, desc: 'Merchant account age < 30 days or high risk category', icon: Store },
-    'Location anomaly': { weight: 15, desc: 'Geographic location mismatch with user origin', icon: MapPin },
-    'System flagged': { weight: 25, desc: 'Rule threshold violation flagged by system', icon: Flag },
+    'Unusual amount': { weight: 25, desc: 'Much larger than user\'s typical transactions', icon: DollarSign },
+    'High velocity': { weight: 20, desc: 'Many transactions in a short time window', icon: Zap },
+    'New device': { weight: 20, desc: 'High-value transaction from unrecognized device', icon: Smartphone },
+    'Merchant risk': { weight: 20, desc: 'New merchant account with large transaction', icon: Store },
+    'Location anomaly': { weight: 15, desc: 'Transaction from unusual location', icon: MapPin },
   };
 
   return (
