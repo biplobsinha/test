@@ -1,0 +1,477 @@
+.login-page-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1310 50%, #0d0b09 100%);
+}
+
+/* Razorpay-inspired Cinematic Grid Background */
+.cinematic-grid {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: 
+    linear-gradient(to right, rgba(139, 92, 80, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(139, 92, 80, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  background-position: center center;
+  mask-image: radial-gradient(ellipse at center, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 70%);
+  -webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 70%);
+  transform: perspective(600px) rotateX(45deg) scale(2);
+  transform-origin: bottom;
+  animation: grid-move 25s linear infinite;
+}
+
+@keyframes grid-move {
+  0% { transform: perspective(600px) rotateX(45deg) scale(2) translateY(0); }
+  100% { transform: perspective(600px) rotateX(45deg) scale(2) translateY(60px); }
+}
+
+/* Floating Particles - Razorpay inspired */
+.particles {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: radial-gradient(circle, rgba(180, 120, 80, 0.5) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: float-up linear infinite;
+  pointer-events: none;
+}
+
+@keyframes float-up {
+  0% {
+    transform: translateY(100vh) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100px) translateX(calc(var(--random-x, 0) * 50px));
+    opacity: 0;
+  }
+}
+
+/* Login Card - Clean Razorpay Style */
+.login-card {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 460px;
+  padding: 48px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  background: rgba(13, 11, 9, 0.85);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(139, 92, 80, 0.15);
+  border-radius: 20px;
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.5),
+    0 0 80px rgba(139, 92, 80, 0.1),
+    inset 0 1px 0 rgba(180, 120, 80, 0.05);
+}
+
+/* Logo & Header - Razorpay inspired */
+.login-header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.logo-wrapper {
+  position: relative;
+  width: 72px;
+  height: 72px;
+  background: linear-gradient(135deg, #8B5A3C 0%, #5A3825 100%);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  box-shadow: 
+    0 8px 32px rgba(139, 90, 60, 0.4),
+    0 0 60px rgba(139, 90, 60, 0.2);
+  animation: logo-pulse 3s ease-in-out infinite;
+}
+
+@keyframes logo-pulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 8px 32px rgba(139, 90, 60, 0.4), 0 0 60px rgba(139, 90, 60, 0.2); }
+  50% { transform: scale(1.05); box-shadow: 0 12px 48px rgba(139, 90, 60, 0.5), 0 0 80px rgba(139, 90, 60, 0.3); }
+}
+
+.logo-glow {
+  position: absolute;
+  inset: -20px;
+  background: radial-gradient(circle, rgba(180, 120, 80, 0.25) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+.brand-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.brand-title {
+  font-size: 32px;
+  font-weight: 800;
+  color: #F8FAFC;
+  letter-spacing: -0.02em;
+  margin: 0;
+  background: linear-gradient(135deg, #F8FAFC 0%, #93C5FD 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.brand-tagline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #94A3B8;
+  letter-spacing: 0.02em;
+}
+
+.brand-tagline svg {
+  color: #B47850;
+}
+
+.buildathon-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  background: rgba(139, 90, 60, 0.15);
+  border: 1px solid rgba(139, 90, 60, 0.25);
+  border-radius: 100px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #C9A989;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.buildathon-badge svg {
+  animation: sparkle 2s ease-in-out infinite;
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 1; transform: scale(1) rotate(0deg); }
+  50% { opacity: 0.7; transform: scale(1.1) rotate(180deg); }
+}
+
+/* Form Styles */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.form-header {
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.form-header h2 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #F1F5F9;
+  margin: 0 0 8px 0;
+}
+
+.form-header p {
+  font-size: 14px;
+  color: #94A3B8;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.form-header strong {
+  color: #CBD5E1;
+  font-weight: 600;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-group label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #CBD5E1;
+  letter-spacing: 0.01em;
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-icon {
+  position: absolute;
+  left: 16px;
+  color: #64748B;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.email-input {
+  width: 100%;
+  padding: 14px 16px 14px 48px;
+  font-size: 15px;
+  color: #F1F5F9;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(139, 92, 80, 0.25);
+  border-radius: 12px;
+  outline: none;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.email-input:hover {
+  border-color: rgba(139, 90, 60, 0.4);
+}
+
+.email-input:focus {
+  border-color: #8B5A3C;
+  box-shadow: 0 0 0 3px rgba(139, 90, 60, 0.15);
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.email-input::placeholder {
+  color: #64748B;
+}
+
+.email-input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* OTP Input */
+.otp-container {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin: 8px 0;
+}
+
+.otp-input {
+  width: 56px;
+  height: 64px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 700;
+  color: #F1F5F9;
+  background: rgba(0, 0, 0, 0.6);
+  border: 2px solid rgba(139, 92, 80, 0.25);
+  border-radius: 12px;
+  outline: none;
+  transition: all 0.2s ease;
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+}
+
+.otp-input:hover {
+  border-color: rgba(139, 90, 60, 0.4);
+}
+
+.otp-input:focus {
+  border-color: #8B5A3C;
+  box-shadow: 0 0 0 3px rgba(139, 90, 60, 0.2);
+  background: rgba(0, 0, 0, 0.8);
+  transform: scale(1.05);
+}
+
+.otp-input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Error Message */
+.error-message {
+  padding: 12px 16px;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 10px;
+  font-size: 13px;
+  color: #FCA5A5;
+  text-align: center;
+  animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+/* Buttons */
+.submit-btn {
+  width: 100%;
+  padding: 14px 24px;
+  font-size: 15px;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(135deg, #8B5A3C 0%, #5A3825 100%);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px rgba(139, 90, 60, 0.35);
+  position: relative;
+  overflow: hidden;
+}
+
+.submit-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.submit-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(139, 90, 60, 0.45);
+}
+
+.submit-btn:hover:not(:disabled)::before {
+  opacity: 1;
+}
+
+.submit-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.submit-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Security Note */
+.security-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 14px;
+  background: rgba(139, 90, 60, 0.08);
+  border: 1px solid rgba(139, 90, 60, 0.15);
+  border-radius: 10px;
+}
+
+.security-note svg {
+  color: #B47850;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.security-note p {
+  font-size: 12px;
+  color: #94A3B8;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* OTP Actions */
+.otp-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 8px;
+}
+
+.link-button {
+  background: none;
+  border: none;
+  font-size: 13px;
+  font-weight: 600;
+  color: #94A3B8;
+  cursor: pointer;
+  padding: 6px 0;
+  transition: all 0.2s ease;
+}
+
+.link-button:hover {
+  color: #CBD5E1;
+}
+
+.link-button.primary {
+  color: #B47850;
+}
+
+.link-button.primary:hover {
+  color: #D4A574;
+}
+
+/* Footer */
+.login-footer {
+  text-align: center;
+  font-size: 11px;
+  color: #64748B;
+  padding-top: 16px;
+  border-top: 1px solid rgba(139, 92, 80, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .login-card {
+    max-width: 90%;
+    padding: 36px 28px;
+  }
+
+  .otp-input {
+    width: 48px;
+    height: 56px;
+    font-size: 20px;
+  }
+}
